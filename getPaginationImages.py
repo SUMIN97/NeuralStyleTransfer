@@ -9,6 +9,7 @@ from selenium.webdriver.common.keys import Keys
 import errno
 ###initial set
 
+
 folder = "./"
 url = "https://www.google.com/search"
 
@@ -85,3 +86,4 @@ for line in img:
       print(fileNum, " : ", line['data-src'])
       srcURL.append(line['data-src'])
       fileNum+=1
+

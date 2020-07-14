@@ -20,11 +20,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8a331742-23b2-4f62-ab43-1288cff12e9d" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/checkStyleDistance.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/classificateDrawingStyle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/getPaginationImages.py" beforeDir="false" afterPath="$PROJECT_DIR$/getPaginationImages.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/neutralStyleTransfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/neutralStyleTransfer.py" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/classificateDrawingStyle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getPaginationImages.py" beforeDir="false" afterPath="$PROJECT_DIR$/getPaginationImages.py" afterDir="false" />
+>>>>>>> 59a00ab4689bfa4abcc6f8b460bb2156dc82b5cc
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +69,7 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunManager" selected="Python.neutralStyleTransfer">
-    <configuration name="neutralStyleTransfer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="neutralStyleTransfer" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="koNLP" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -126,8 +132,12 @@
       <updated>1594106827814</updated>
       <workItem from="1594106841454" duration="337000" />
       <workItem from="1594120984705" duration="1118000" />
+<<<<<<< HEAD
       <workItem from="1594122611045" duration="23725000" />
       <workItem from="1594356559792" duration="22058000" />
+=======
+      <workItem from="1594122611045" duration="40003000" />
+>>>>>>> 59a00ab4689bfa4abcc6f8b460bb2156dc82b5cc
     </task>
     <servers />
   </component>
@@ -146,6 +156,10 @@
     </option>
   </component>
   <component name="WindowStateProjectService">
+    <state x="406" y="47" key="#neutralStyleTransfer" timestamp="1594619507845">
+      <screen x="0" y="0" width="1440" height="900" />
+    </state>
+    <state x="406" y="47" key="#neutralStyleTransfer/1440.0.1048.770/0.0.1440.900@0.0.1440.900" timestamp="1594619507845" />
     <state width="1398" height="194" key="GridCell.Tab.0.bottom" timestamp="1594221932912">
       <screen x="0" y="0" width="1440" height="900" />
     </state>

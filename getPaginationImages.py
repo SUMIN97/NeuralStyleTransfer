@@ -13,13 +13,13 @@ page = 1
 #whole_source 는 크롤링할 모든 페이지의 HTML 소스를 전부 저장할 변수
 whole_source = ""
 for page_number in range(1, maximum+1):
-    URL = 'https://grafolio.naver.com/searchList.grfl?query=%EC%86%8C%EB%AC%98&order=wRecommend&type=works&haveProductYn=&page=' + str(page_number) + '&categoryNo=&storyCategoryNo=&termType=entire&wallpaperYn=N#middleTab'
+    URL = 'https://www.singulart.com/ko/%EC%86%8C%EB%AC%98/%EB%A8%B9?page=' + str(page_number)
     response = requests.get(URL)
     whole_source = whole_source + response.text
 soup = BeautifulSoup(whole_source, 'html.parser')
-find_title = soup.select(".works_image")
+find_title = soup.select("picture > img")
 
-print(find_title)
+print(soup)
 
 for title in find_title:
 	print(title.text)

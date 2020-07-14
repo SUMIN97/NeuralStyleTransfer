@@ -1,32 +1,87 @@
+import sys, os
 from bs4 import BeautifulSoup
+from selenium import webdriver
+import urllib, urllib.request
 import requests
+import random
+import time
+from selenium.webdriver.common.keys import Keys
+import errno
+###initial set
 
-maximum = 3
-page = 1
+folder = "./"
+url = "https://www.google.com/search"
 
-## BeautifulSoup으로 html소스를 python객체로 변환하기
-## 첫 인자는 html소스코드, 두 번째 인자는 어떤 parser를 이용할지 명시.
-## 이 글에서는 Python 내장 html.parser를 이용했다.
-#https://grafolio.naver.com/searchList.grfl?query=%EC%86%8C%EB%AC%98&order=wRecommend&type=works&haveProductYn=&page=1&categoryNo=&storyCategoryNo=&termType=entire&wallpaperYn=N#middleTab
+searchItem = "판화"
+size = 100
+
+params ={
+   "q":searchItem
+   ,"tbm":"isch"
+   ,"sa":"1"
+   ,"source":"lnms&tbm=isch"
+}
+
+url = url+"?"+urllib.parse.urlencode(params)
+browser = webdriver.Chrome("/usr/lib/chromium-browser/chromedriver")
+time.sleep(0.5)
+browser.get(url)
+html = browser.page_source
+time.sleep(0.5)
+
+### get number of image for a page
+
+soup_temp = BeautifulSoup(html, 'html.parser')
+img4page = len(soup_temp.findAll("img"))
+
+### page down
+
+elem = browser.find_element_by_tag_name("body")
+imgCnt = 0
+
+while imgCnt < size * 10:
+   elem.send_keys(Keys.PAGE_DOWN)
+   rnd = random.random()
+   time.sleep(rnd)
+   imgCnt += img4page
+
+html = browser.page_source
+soup = BeautifulSoup(html,'html.parser')
+img = soup.findAll("img")
+
+browser.find_elements_by_tag_name('img')
+
+fileNum=0
+srcURL=[]
+
+for line in img:
+   if str(line).find('data-src') != -1 and str(line).find('http')<100:
+      print(fileNum, " : ", line['data-src'])
+      srcURL.append(line['data-src'])
+      fileNum+=1
 
 
-#whole_source 는 크롤링할 모든 페이지의 HTML 소스를 전부 저장할 변수
-whole_source = ""
-for page_number in range(1, maximum+1):
-    URL = 'https://grafolio.naver.com/searchList.grfl?query=%EC%86%8C%EB%AC%98&order=wRecommend&type=works&haveProductYn=&page=' + str(page_number) + '&categoryNo=&storyCategoryNo=&termType=entire&wallpaperYn=N#middleTab'
-    response = requests.get(URL)
-    whole_source = whole_source + response.text
-soup = BeautifulSoup(whole_source, 'html.parser')
-find_title = soup.select(".works_image")
+### make folder and save picture in that directory
 
-print(find_title)
+saveDir = folder+searchItem
 
-for title in find_title:
-	print(title.text)
-# for i in enumerate(img_data[1:]):
-#     # 딕셔너리를 순서대로 넣어줌
-#     t = urlopen(i[1].attrs['src']).read()
-#     filename = "byeongwoo_" + str(i[0] + 1) + '.jpg'
-#     with open(filename, "wb") as f:
-#         f.write(t)
-#     print("Img Save Success")
+try:
+    if not(os.path.isdir(saveDir)):
+        os.makedirs(os.path.join(saveDir))
+except OSError as e:
+    if e.errno != errno.EEXIST:
+        print("Failed to create directory!!!!!")
+        raise
+
+for i,src in zip(range(fileNum),srcURL):
+    urllib.request.urlretrieve(src, saveDir+"/"+str(i)+".jpg")
+    print(i,"saved")
+
+fileNum=0
+srcURL=[]
+
+for line in img:
+   if str(line).find('data-src') != -1 and str(line).find('http')<100:
+      print(fileNum, " : ", line['data-src'])
+      srcURL.append(line['data-src'])
+      fileNum+=1

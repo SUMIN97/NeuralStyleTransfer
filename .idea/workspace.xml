@@ -1,8 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="8a331742-23b2-4f62-ab43-1288cff12e9d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/checkStyleDistance.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classificateDrawingStyle.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/getPaginationImages.py" beforeDir="false" afterPath="$PROJECT_DIR$/getPaginationImages.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/neutralStyleTransfer.py" beforeDir="false" afterPath="$PROJECT_DIR$/neutralStyleTransfer.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +52,15 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
   <component name="RunManager" selected="Python.neutralStyleTransfer">
     <configuration name="neutralStyleTransfer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -98,11 +127,23 @@
       <workItem from="1594106841454" duration="337000" />
       <workItem from="1594120984705" duration="1118000" />
       <workItem from="1594122611045" duration="23725000" />
+      <workItem from="1594356559792" duration="22058000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state width="1398" height="194" key="GridCell.Tab.0.bottom" timestamp="1594221932912">
@@ -149,14 +190,20 @@
       <screen x="0" y="23" width="1440" height="824" />
     </state>
     <state width="1358" height="248" key="GridCell.Tab.1.right/0.23.1440.824@0.23.1440.824" timestamp="1594122073776" />
-    <state x="221" y="74" key="SettingsEditor" timestamp="1594124922479">
-      <screen x="0" y="23" width="1440" height="824" />
+    <state x="2725" y="162" key="SettingsEditor" timestamp="1594374733983">
+      <screen x="1920" y="0" width="1920" height="1080" />
     </state>
     <state x="221" y="74" key="SettingsEditor/0.23.1440.824@0.23.1440.824" timestamp="1594124922479" />
+    <state x="2725" y="162" key="SettingsEditor/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1594374733983" />
+    <state x="844" y="185" key="SettingsEditor/67.27.1853.1053/1920.0.1920.1080@67.27.1853.1053" timestamp="1594363993866" />
+    <state x="2399" y="219" width="432" height="658" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1594360641783">
+      <screen x="1920" y="0" width="1920" height="1080" />
+    </state>
+    <state x="2399" y="219" width="432" height="658" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/67.27.1853.1053/1920.0.1920.1080@1920.0.1920.1080" timestamp="1594360641783" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/koNLP$test.coverage" NAME="test Coverage Results" MODIFIED="1594183623223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/koNLP$neutralStyleTransfer.coverage" NAME="neutralStyleTransfer Coverage Results" MODIFIED="1594221849359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/koNLP$classTwitter.coverage" NAME="classTwitter Coverage Results" MODIFIED="1594198466883" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/koNLP$neutralStyleTransfer.coverage" NAME="neutralStyleTransfer Coverage Results" MODIFIED="1594221849359" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/koNLP$test.coverage" NAME="test Coverage Results" MODIFIED="1594183623223" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

@@ -1,0 +1,11 @@
+epoch 200번일때
+(pytoch1.5) lab@lab-sumin:~/Documents/SWMaestro/NeuralStyleTransfer$ python classification.py
+  0%|                                                                                                                                                                                                           | 0/200 [00:00<?, ?it/s]/home/lab/pytoch1.5/lib/python3.6/site-packages/PIL/Image.py:960: UserWarning: Palette images with Transparency expressed in bytes should be converted to RGBA images
+  "Palette images with Transparency expressed in bytes should be "
+100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 200/200 [40:43<00:00, 12.22s/it]
+Finisned Training
+Accuracy of drawing : 88 %
+Accuracy of   oil : 24 %
+Accuracy of oriental : 62 %
+Accuracy of illustration : 33 %
+Accuracy of watercolor : 60 %

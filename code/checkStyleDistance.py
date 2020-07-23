@@ -1,10 +1,12 @@
+
+import numpy as np
 from PIL import Image
 import matplotlib.pyplot as plt
-import numpy as np
-
 import torch
 import torch.optim as optim
 from torchvision import transforms, models
+
+import os
 
 vgg = models.vgg19(pretrained=True).features
 
@@ -13,9 +15,9 @@ for param in vgg.parameters():
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 vgg.to(device)
-print(vgg)
+print(vgg._module.item())
 
-def load_image(img_path, size = 600, shape = None):
+def load_image(img_path, size = 224, shape = None):
     image = Image.open(img_path).convert("RGB")
 
     # if max(image.size) > max_size:
@@ -33,6 +35,7 @@ def load_image(img_path, size = 600, shape = None):
     return image
 
 kinds = ["3DGraphics", "Comic", "Oil", "Pen", "Pencil", "VectorArt","Watercolor" ]
+
 num_kinds = len(kinds)
 num_style_layers = 5
 
@@ -43,16 +46,27 @@ def get_index_images(index):
         images.append(load_image(path).to(device))
     return images
 
+def get_folder_images(folder_path):
+    num_images = os.walk(folder_path).next()[2] #디렉토리 내의 파일 개수
+    images = []
+    for idx in range(num_images):
+        img_path = folder_path + '/' + str(idx) + '.jpg'
+        images.append(load_image(img_path).to(device))
+    return images
+
+
 
 # oriental =load_image('Oriental/0.jpg').to(device)
 # engraving = load_image('Engraving/0.jpg', shape = oriental.shape[-2:]).to(device)
-# drawing = load_image('Drawing/0.jpg', shape = oriental.shape[-2:]).to(device)
+#drawing = load_image('Drawing/0.jpg', shape = oriental.shape[-2:]).to(device)
 # oil = load_image('Oil/0.jpg', shape = oriental.shape[-2:]).to(device)
 # pastel = load_image('Pastel/0.jpg', shape = oriental.shape[-2:]).to(device)
 # watercolor = load_image('Watercolor/0.jpg', shape = oriental.shape[-2:]).to(device)
 
 data_images = get_index_images(1)
 test_images = get_index_images(2)
+
+data_drawing = get_folder_images('/home/lab/Documents/SWMaestro/NeuralStyleTransfer/data/drawing')
 
 
 # and converting it from a Tensor image to a NumPy image for display
@@ -91,10 +105,10 @@ def get_features(image, model, layers=None):
     ## Need the layers for the content and style representations of an image
     if layers is None:
         layers = {
-                  # '1': 'conv1_1',
-                  # '6': 'conv2_1',
-                  # '11': 'conv3_1',
-                  # '20': 'conv4_1',
+                  '1': 'conv1_1',
+                  '6': 'conv2_1',
+                  '11': 'conv3_1',
+                  '20': 'conv4_1',
                   '29': 'conv5_1'}
 
     features = {}
@@ -122,12 +136,28 @@ def gram_matrix(tensor):
 # weighting earlier layers more will result in *larger* style artifacts
 # notice we are excluding `conv4_2` our content representation
 style_weights = {
-                # 'conv1_1': 1,
-                #  'conv2_1': 1,
-                #  'conv3_1': 1,
-                #  'conv4_1':1,
-                 'conv5_1': 1}
+                'conv1_1': 1,
+                 'conv2_1': 1,
+                 'conv3_1': 1,
+                 'conv4_1':1,
+                 'conv5_1': 1
+}
 
+original_features = get_features(data_images[0], vgg)
+
+
+for idx in range(len(data_drawing)):
+    test_features = get_features((data_drawing[idx], vgg))
+
+    for layer in style_weights:
+        original = gram_matrix(original_features)
+        test_gram = gram_matrix(test_features)
+
+
+
+
+
+"""
 style_weight = 1e6  # beta
 
 all_data_features = []
@@ -161,6 +191,8 @@ for test_idx in range(len(test_images)):
                 loss += layer_loss
 
         print("Test: ", kinds[test_idx], " Data: ",kinds[data_idx], "loss: ", loss)
+        
+"""
 
 
 

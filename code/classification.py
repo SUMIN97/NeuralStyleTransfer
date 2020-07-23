@@ -12,8 +12,8 @@ classes = ['drawing','oil', 'oriental','illustration','watercolor']
 #torchvision은 데이터셋을 불러올때 전처리 작업을 간단히 진행할 수 있는 lib
 
 #torvision은 데이터셋 출력을 [0,1] 범위를 갖는 pilimage이므로 [-1, 1]의 범위로 변
-transform = transforms.Compose(
-    [   transforms.Resize((224, 224)),
+transform = transforms.Compose([
+    transforms.Resize((224, 224)),
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
 

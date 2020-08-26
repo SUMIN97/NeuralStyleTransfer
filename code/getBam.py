@@ -20,7 +20,10 @@ driver.implicitly_wait(5)
 MEDIA_NUM = 7
 CONTENT_NUM = 9
 IMG_NUM = 48
-baseDir = "/Users/sumin/PycharmProjects/NeuralStyleTransfer/data/BAM"
+n_epoch = 10
+# baseDir = "/Users/sumin/PycharmProjects/NeuralStyleTransfer/code/data"
+baseDir = os.path.abspath("./")
+
 MEDIA_LIST = ['3DGraphics', 'Comic', 'Pencil', 'Oil', 'Pen', 'VectorArt', 'Watercolor']
 CONTENT_LIST = ['Bicycle', 'Bird', 'Building', 'Cars', 'Cat', 'Dog', 'Flower', 'People', 'Tree']
 
@@ -29,23 +32,36 @@ try:
         EC.presence_of_element_located((By.CSS_SELECTOR, ".Media"))
     )
 finally:
-    for m in range(1, MEDIA_NUM+1):
-        driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[1]/ul[1]/button[%d]' % m).click()
-        driver.implicitly_wait(10)
-        for c in range(1, CONTENT_NUM+1):
-            driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[1]/ul[2]/button[%d]' % c).click()
+    for epoch in range(1, n_epoch):
+        print(epoch)
+        for m in range(1, MEDIA_NUM+1):
+            driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[1]/ul[1]/button[%d]' % m).click()
             driver.implicitly_wait(10)
+            for c in range(1, CONTENT_NUM+1):
+                driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[1]/ul[2]/button[%d]' % c).click()
+                driver.implicitly_wait(10)
 
-            for idx in range(IMG_NUM):
-                img = driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[1]/div/img[{}]'.format(idx + 2))
-                src = img.get_attribute('src')
-                if src[-2] == 'n':
-                    continue
-                path = os.path.join(baseDir, MEDIA_LIST[m-1], CONTENT_LIST[c-1],(str(idx) + '.jpg' ))
-                try:
-                    urllib.request.urlretrieve(src, path)
-                except:
-                    pass
+                for idx in range(IMG_NUM):
+                    img = driver.find_element_by_xpath('/html/body/div[1]/div[2]/div[2]/div[1]/div/img[{}]'.format(idx + 2))
+                    src = img.get_attribute('src')
+                    # print(src)
+                    if src[-2] == 'n':
+                        continue
+
+                    folder_name = MEDIA_LIST[m-1] + '_' + CONTENT_LIST[c-1]
+                    folder_path = os.path.join(baseDir, 'data', folder_name)
+                    if os.path.exists(folder_path) == False:
+                        os.mkdir(folder_path)
+                    
+                    img_idx = epoch * 50 + idx
+                    path = os.path.join(folder_path,(str(img_idx) + '.jpg' ))
+                    try:
+                        urllib.request.urlretrieve(src, path)
+                    except:
+                        print("not save")
+                        pass
+
+# /Users/sumin/PycharmProjects/NeuralStyleTransfer/code/data
 
 
 
